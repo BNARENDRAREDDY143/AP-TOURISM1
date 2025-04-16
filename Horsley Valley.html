@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horsley Hills</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f3;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+    .place-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: 0.3s;
+      margin-bottom: 30px;
+    }
+    .place-card:hover {
+      transform: translateY(-5px);
+    }
+    .slideshow-container {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.3);
+      color: white;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .slide-arrow.prev { left: 15px; }
+    .slide-arrow.next { right: 15px; }
+    .slide-nav {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+    }
+    .slide-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .slide-dot.active { background: white; }
+    .place-content {
+      padding: 20px;
+    }
+    .place-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .place-description {
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    .detail-title {
+      font-size: 1.2rem;
+      color: #2980b9;
+      margin: 20px 0 10px;
+    }
+    .map-container {
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 250px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .directions-button-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .directions-button-container a {
+      background-color: #2980b9;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .directions-button-container a:hover {
+      background-color: #216a94;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="place-card">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="https://www.avis.co.in/blog/wp-content/uploads/2024/03/image1-1.jpg" alt="Horsley Hills View" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://www.savaari.com/blog/wp-content/uploads/2022/04/48558708151_ac21de557f_c.jpg" alt="Horsley Valley Nature" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRJp8iT-yKXG34W4uhb3fJlsNoNvvp_D3rTzT_YoOqQQXKtTON8W71CP6tNEdwIfTVPmlBXNFIi25pqNu8eUDleO0I-64Jn5Zrz9AaVFqM0V4XqJ2_rdLFLvGsz5br9JnlTA9TxpwF4qWo/s1008/Bhushavali_My_Travelogue_Horsley_Hills+%252814%2529.JPG" alt="Scenic Hills" loading="lazy">
+        </div>
+
+        <div class="slide-arrow prev">&#10094;</div>
+        <div class="slide-arrow next">&#10095;</div>
+
+        <div class="slide-nav">
+          <span class="slide-dot active"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+        </div>
+      </div>
+
+      <div class="place-content">
+        <h3 class="place-title">Horsley Hills</h3>
+        <p class="place-description">A picturesque hill station in Andhra Pradesh known for its lush greenery, cool climate, and panoramic views. It's a great weekend getaway destination.</p>
+
+        <h4 class="detail-title">Highlights</h4>
+        <p>Viewpoint at Gali Bandalu, Mallamma Temple, High-altitude Zoo, Environmental Park, Adventure sports</p>
+
+        <h4 class="detail-title">Accommodation</h4>
+        <ul>
+          <li>Haritha Hill Resort (₹2,000–₹3,000)</li>
+          <li>Holiday Home Cottages (₹1,500–₹2,500)</li>
+        </ul>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.8679838303916!2d78.38449981470108!3d13.66325229038424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2b5e7cbf6cd7b%3A0x3e3217b2eb38a0a3!2sHorsley%20Hills%2C%20Andhra%20Pradesh%20517152!5e0!3m2!1sen!2sin!4v1682338028392!5m2!1sen!2sin" allowfullscreen="" loading="lazy" title="Horsley Hills Map"></iframe>
+        </div>
+
+        <div class="directions-button-container">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Horsley+Hills,+Andhra+Pradesh" target="_blank">
+            Get Directions
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slide-dot');
+      const prev = document.querySelector('.slide-arrow.prev');
+      const next = document.querySelector('.slide-arrow.next');
+      let current = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+          dots[i].classList.toggle('active', i === index);
+        });
+      }
+
+      function nextSlide() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }
+
+      function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      }
+
+      function startSlideshow() {
+        interval = setInterval(nextSlide, 4000);
+      }
+
+      function stopSlideshow() {
+        clearInterval(interval);
+      }
+
+      prev.addEventListener('click', () => {
+        stopSlideshow();
+        prevSlide();
+        startSlideshow();
+      });
+
+      next.addEventListener('click', () => {
+        stopSlideshow();
+        nextSlide();
+        startSlideshow();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopSlideshow();
+          current = index;
+          showSlide(current);
+          startSlideshow();
+        });
+      });
+
+      showSlide(current);
+      startSlideshow();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kondapalli Fort</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f3f3f3;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .place-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .slideshow-container {
+      position: relative;
+      height: 300px;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .slide-arrow.prev {
+      left: 15px;
+    }
+
+    .slide-arrow.next {
+      right: 15px;
+    }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 12px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .slide-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 4px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      background: #fff;
+    }
+
+    .place-content {
+      padding: 20px;
+    }
+
+    .place-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .place-description {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .detail-title {
+      font-size: 1.2rem;
+      color: #2980b9;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    .place-details p {
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    .map-container {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .directions-button-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .directions-button-container a {
+      display: inline-block;
+      background-color: #2980b9;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .directions-button-container a:hover {
+      background-color: #1c6391;
+    }
+
+    @media (max-width: 768px) {
+      .slideshow-container {
+        height: 220px;
+      }
+      .place-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="place-card">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="https://s7ap1.scene7.com/is/image/incredibleindia/3-kondapalli-fort-guntur-andhra-pradesh-attr-about?qlt=82&ts=1726743674033" alt="Kondapalli Fort View"/>
+        </div>
+        <div class="slide">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/25/39/c9/kondapalli-fort.jpg?w=900&h=500&s=1" alt="Kondapalli Fort Wide"/>
+        </div>
+        <div class="slide">
+          <img src="https://vijayawadatourism.com/images//tourist-places/kondapalli-fort-vijayawada/kondapalli-fort-vijayawada-india-tourism-history.jpg" alt="Fort Entrance"/>
+        </div>
+
+        <div class="slide-arrow prev">&#10094;</div>
+        <div class="slide-arrow next">&#10095;</div>
+
+        <div class="slide-nav">
+          <span class="slide-dot active"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+        </div>
+      </div>
+
+      <div class="place-content">
+        <h3 class="place-title">Kondapalli Fort</h3>
+        <p class="place-description">
+          Kondapalli Fort, also known as Kondapalli Kota, is a 14th-century hill fortress located near Vijayawada in Andhra Pradesh. Known for its historic importance and panoramic views, it also serves as a gateway to Kondapalli village, which is famous for its wooden toys.
+        </p>
+
+        <div class="place-details">
+          <h4 class="detail-title">History</h4>
+          <p>Built by Prolaya Vema Reddy of the Reddy dynasty in the 14th century, the fort later came under the rule of the Gajapati Kingdom, the Qutb Shahis, and the British.</p>
+
+          <h4 class="detail-title">Highlights</h4>
+          <p>The fort has a massive three-story tower, deep reservoirs, and beautiful panoramic views of the surrounding hills. A walk through the ruins offers a glimpse into its past glory.</p>
+
+          <h4 class="detail-title">Travel Tips</h4>
+          <ul>
+            <li>Open from 10 AM to 5 PM</li>
+            <li>Entry Fee: ₹20 per person (subject to change)</li>
+            <li>Wear good walking shoes — terrain is uneven</li>
+          </ul>
+        </div>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.3927886627235!2d80.50207197419629!3d16.70323258411052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f1bd028af4e9%3A0x2ec3146a04576ae5!2sKondapalli%20Fort!5e0!3m2!1sen!2sin!4v1712318515513!5m2!1sen!2sin" allowfullscreen="" loading="lazy" title="Kondapalli Fort Map"></iframe>
+        </div>
+
+        <div class="directions-button-container">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Kondapalli+Fort" target="_blank">Get Directions</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slide-dot');
+      const prev = document.querySelector('.slide-arrow.prev');
+      const next = document.querySelector('.slide-arrow.next');
+      let current = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+          dots[i].classList.toggle('active', i === index);
+        });
+      }
+
+      function nextSlide() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }
+
+      function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      }
+
+      function startSlideshow() {
+        interval = setInterval(nextSlide, 4000);
+      }
+
+      function stopSlideshow() {
+        clearInterval(interval);
+      }
+
+      prev.addEventListener('click', () => {
+        stopSlideshow();
+        prevSlide();
+        startSlideshow();
+      });
+
+      next.addEventListener('click', () => {
+        stopSlideshow();
+        nextSlide();
+        startSlideshow();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopSlideshow();
+          current = index;
+          showSlide(current);
+          startSlideshow();
+        });
+      });
+
+      showSlide(current);
+      startSlideshow();
+    });
+  </script>
+</body>
+</html>

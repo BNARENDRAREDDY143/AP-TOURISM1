@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rushikonda Beach Card</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .place-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .place-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+
+    .slideshow-container {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .slide-arrow.prev {
+      left: 15px;
+    }
+
+    .slide-arrow.next {
+      right: 15px;
+    }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .slide-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      background: #fff;
+    }
+
+    .place-content {
+      padding: 20px;
+    }
+
+    .place-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .place-description {
+      color: #7f8c8d;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .place-details {
+      margin: 20px 0;
+    }
+
+    .detail-title {
+      font-size: 1.2rem;
+      color: #2980b9;
+      margin: 15px 0 8px;
+      font-weight: 600;
+    }
+
+    .place-details p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .map-container {
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .directions-button-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .directions-button-container a {
+      display: inline-block;
+      background-color: #2980b9;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .directions-button-container a:hover {
+      background-color: #1f6396;
+    }
+
+    @media (max-width: 768px) {
+      .slideshow-container {
+        height: 250px;
+      }
+
+      .place-title {
+        font-size: 1.5rem;
+      }
+
+      .map-container {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="place-card">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="https://vizagtourism.org.in/images/places-to-visit/header/rishikonda-beach-vizag-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="Rushikonda Beach View 1" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://cdn.abhibus.com/2024/06/Rushikonda-beach.jpg" alt="Rushikonda Beach View 2" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://pbs.twimg.com/media/Du3C5KuW4AAYIvS.jpg" alt="Rushikonda Sunset" loading="lazy">
+        </div>
+
+        <div class="slide-arrow prev">&#10094;</div>
+        <div class="slide-arrow next">&#10095;</div>
+
+        <div class="slide-nav">
+          <span class="slide-dot active"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+        </div>
+      </div>
+
+      <div class="place-content">
+        <h3 class="place-title">Rushikonda Beach</h3>
+        <p class="place-description">Located near Visakhapatnam, Rushikonda Beach is known for its golden sands, water sports, and lush green surroundings. It's a popular destination for both relaxation and adventure.</p>
+
+        <div class="place-details">
+          <h4 class="detail-title">Activities</h4>
+          <p>Jet skiing, windsurfing, swimming, and sunbathing.</p>
+
+          <h4 class="detail-title">Best Time to Visit</h4>
+          <p>November to February offers the best weather for beach activities.</p>
+
+          <h4 class="detail-title">Nearby Attractions</h4>
+          <p>Kailasagiri Hill Park, INS Kursura Submarine Museum, and RK Beach.</p>
+        </div>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2009987747234!2d83.37745421483792!3d17.78014158784233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a395c3fa4dd6c59%3A0x275e1f3c6dc9aeb!2sRushikonda%20Beach!5e0!3m2!1sen!2sin!4v1680609981031!5m2!1sen!2sin" allowfullscreen="" loading="lazy" title="Rushikonda Beach Map"></iframe>
+        </div>
+
+        <div class="directions-button-container">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Rushikonda+Beach" target="_blank">
+            Get Directions
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slide-dot');
+      const prev = document.querySelector('.slide-arrow.prev');
+      const next = document.querySelector('.slide-arrow.next');
+      let current = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+          dots[i].classList.toggle('active', i === index);
+        });
+      }
+
+      function nextSlide() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }
+
+      function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      }
+
+      function startSlideshow() {
+        interval = setInterval(nextSlide, 3000);
+      }
+
+      function stopSlideshow() {
+        clearInterval(interval);
+      }
+
+      prev.addEventListener('click', () => {
+        stopSlideshow();
+        prevSlide();
+        startSlideshow();
+      });
+
+      next.addEventListener('click', () => {
+        stopSlideshow();
+        nextSlide();
+        startSlideshow();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopSlideshow();
+          current = index;
+          showSlide(current);
+          startSlideshow();
+        });
+      });
+
+      showSlide(current);
+      startSlideshow();
+    });
+  </script>
+</body>
+</html>

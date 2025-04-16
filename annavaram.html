@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annavaram Temple</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .place-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .place-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    }
+
+    .slideshow-container {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .slide-arrow.prev {
+      left: 15px;
+    }
+
+    .slide-arrow.next {
+      right: 15px;
+    }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .slide-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      background: #fff;
+    }
+
+    .place-content {
+      padding: 20px;
+    }
+
+    .place-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .place-description {
+      color: #7f8c8d;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .place-details {
+      margin: 20px 0;
+    }
+
+    .detail-title {
+      font-size: 1.2rem;
+      color: #e67e22;
+      margin: 15px 0 8px;
+      font-weight: 600;
+    }
+
+    .place-details p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .accommodation-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .accommodation-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+      color: #555;
+    }
+
+    .accommodation-list li:last-child {
+      border-bottom: none;
+    }
+
+    .map-container {
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .directions-button-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .directions-button-container a {
+      display: inline-block;
+      background-color: #e67e22;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .directions-button-container a:hover {
+      background-color: #cf711e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="place-card">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="https://viharadarshani.in/wp-content/uploads/2020/12/Annavaram-Temple.png" alt="Annavaram Temple" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://xploreall.com/wp-content/uploads/2023/12/Annavaram_main_temple-jpeg.webp" alt="Temple View" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://i.ytimg.com/vi/4rsleAv_xf4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB9l1Xq12ITACEwzCPHFacBsJntQw" alt="Annavaram Aerial" loading="lazy">
+        </div>
+
+        <div class="slide-arrow prev">&#10094;</div>
+        <div class="slide-arrow next">&#10095;</div>
+
+        <div class="slide-nav">
+          <span class="slide-dot active"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+        </div>
+      </div>
+
+      <div class="place-content">
+        <h3 class="place-title">Annavaram Temple</h3>
+        <p class="place-description">Sri Veera Venkata Satyanarayana Swamy Temple, located on Ratnagiri Hill, is one of the most visited temples in Andhra Pradesh. It's famous for the Satyanarayana Vratham.</p>
+
+        <div class="place-details">
+          <h4 class="detail-title">History</h4>
+          <p>Dedicated to Lord Satyanarayana (an incarnation of Vishnu), the temple was constructed in 1891. It draws devotees from across India, especially for performing Vrathams for prosperity and peace.</p>
+
+          <h4 class="detail-title">Highlights</h4>
+          <p>Scenic hilltop views, daily Satyanarayana Vratham rituals, and Prasadam distribution. A panoramic stairway leads to the main shrine.</p>
+
+          <h4 class="detail-title">Accommodation</h4>
+          <ul class="accommodation-list">
+            <li>Devasthanam Choultries (₹100-₹500)</li>
+            <li>Sathya Sai Residency (₹1,000-₹1,800)</li>
+            <li>Hotel Sri Venkateswara Grand (₹1,500-₹2,500)</li>
+          </ul>
+        </div>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3818.2226272681656!2d82.39371257495717!3d17.28306810890161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37c23c1e204805%3A0xd3e05cb588fe7d2!2sSri%20Veera%20Venkata%20Satyanarayana%20Swamy%20Temple!5e0!3m2!1sen!2sin!4v1681212428477!5m2!1sen!2sin" allowfullscreen="" loading="lazy" title="Annavaram Map"></iframe>
+        </div>
+
+        <div class="directions-button-container">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Annavaram+Temple,+Andhra+Pradesh" target="_blank">
+            Get Directions
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slide-dot');
+      const prev = document.querySelector('.slide-arrow.prev');
+      const next = document.querySelector('.slide-arrow.next');
+      let current = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+          dots[i].classList.toggle('active', i === index);
+        });
+      }
+
+      function nextSlide() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }
+
+      function prevSlide() {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      }
+
+      function startSlideshow() {
+        interval = setInterval(nextSlide, 3000);
+      }
+
+      function stopSlideshow() {
+        clearInterval(interval);
+      }
+
+      prev.addEventListener('click', () => {
+        stopSlideshow();
+        prevSlide();
+        startSlideshow();
+      });
+
+      next.addEventListener('click', () => {
+        stopSlideshow();
+        nextSlide();
+        startSlideshow();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopSlideshow();
+          current = index;
+          showSlide(current);
+          startSlideshow();
+        });
+      });
+
+      showSlide(current);
+      startSlideshow();
+    });
+  </script>
+</body>
+</html>

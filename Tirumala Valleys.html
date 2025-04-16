@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tirumala Valleys</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .place-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .slideshow-container {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .slide-arrow.prev {
+      left: 15px;
+    }
+
+    .slide-arrow.next {
+      right: 15px;
+    }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+
+    .slide-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .slide-dot.active {
+      background: #fff;
+    }
+
+    .place-content {
+      padding: 20px;
+    }
+
+    .place-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .place-description {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .place-details {
+      margin-top: 20px;
+    }
+
+    .detail-title {
+      color: #e67e22;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    .map-container {
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .directions-button-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .directions-button-container a {
+      display: inline-block;
+      background-color: #e67e22;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .directions-button-container a:hover {
+      background-color: #cf711e;
+    }
+
+    @media (max-width: 768px) {
+      .slideshow-container {
+        height: 220px;
+      }
+
+      .place-title {
+        font-size: 1.6rem;
+      }
+
+      .map-container {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="place-card">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Natural_stone_arch_in_tirumala.JPG" alt="Tirumala Valley view">
+        </div>
+        <div class="slide">
+          <img src="https://www.trawell.in/admin/images/upload/741666646Tirumala_Venkateswara_Sanctuary_Main.jpg" alt="Lush green hills of Tirumala">
+        </div>
+        <div class="slide">
+          <img src="https://s3.india.com/wp-content/uploads/2024/03/Feature-Image_-Tirupati-1.jpg?impolicy=Medium_Widthonly&w=350&h=263" alt="Scenic forest route to Tirumala">
+        </div>
+
+        <div class="slide-arrow prev">&#10094;</div>
+        <div class="slide-arrow next">&#10095;</div>
+
+        <div class="slide-nav">
+          <span class="slide-dot active"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+        </div>
+      </div>
+
+      <div class="place-content">
+        <h3 class="place-title">Tirumala Valleys</h3>
+        <p class="place-description">
+          The Tirumala Valleys, surrounding the sacred Tirumala hills, are a serene and forested landscape that offers tranquility, divine energy, and a breathtaking natural escape for devotees and trekkers alike.
+        </p>
+
+        <div class="place-details">
+          <h4 class="detail-title">Highlights</h4>
+          <p>Srivari Mettu & Alipiri trekking paths, Papavinasanam waterfalls, scenic ghat roads, and lush forest views across the Seshachalam range.</p>
+
+          <h4 class="detail-title">Best Time to Visit</h4>
+          <p>October to March for cool weather and misty valley views.</p>
+
+          <h4 class="detail-title">Nearby Attractions</h4>
+          <p>Sri Venkateswara Temple, Akasha Ganga, Talakona Falls, Deer Park</p>
+        </div>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62226.494128311525!2d79.3406098!3d13.6679856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b09cb2f18a3%3A0x5f64c70e4a1f88cf!2sTirumala%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000" allowfullscreen="" loading="lazy" title="Tirumala Valleys Map"></iframe>
+        </div>
+
+        <div class="directions-button-container">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Tirumala+Valleys,+Andhra+Pradesh" target="_blank">Get Directions</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slide-dot');
+      const prev = document.querySelector('.slide-arrow.prev');
+      const next = document.querySelector('.slide-arrow.next');
+      let current = 0;
+      let interval;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+          dots[i].classList.toggle('active', i === index);
+        });
+      }
+
+      function nextSlide() {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }
+
+      function prevSlideFunc() {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      }
+
+      function startSlideshow() {
+        interval = setInterval(nextSlide, 3500);
+      }
+
+      function stopSlideshow() {
+        clearInterval(interval);
+      }
+
+      prev.addEventListener('click', () => {
+        stopSlideshow();
+        prevSlideFunc();
+        startSlideshow();
+      });
+
+      next.addEventListener('click', () => {
+        stopSlideshow();
+        nextSlide();
+        startSlideshow();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopSlideshow();
+          current = index;
+          showSlide(current);
+          startSlideshow();
+        });
+      });
+
+      showSlide(current);
+      startSlideshow();
+    });
+  </script>
+</body>
+</html>

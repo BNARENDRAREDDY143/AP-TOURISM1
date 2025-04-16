@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Andhra Pradesh - The Koh-i-Noor of India</title>
+    <meta name="description" content="Discover the rich heritage, breathtaking landscapes, and vibrant culture of Andhra Pradesh. Explore temples, valleys, beaches, and historical marvels.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+    <!-- Animate.css for additional animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #1d3557;
+            --secondary-light: rgba(29, 53, 87, 0.9);
+            --light: #f1faee;
+            --accent: #a8dadc;
+            --dark: #457b9d;
+            --text: #333;
+            --text-light: #555;
+            --white: #fff;
+            --black: #000;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.6);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-title.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+            transition: width 0.8s ease-out 0.5s;
+        }
+        
+        .section-title.animate::after {
+            width: 80px;
+        }
+         /* Header Styles */
+         header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+            z-index: -1;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
+            transform: scale(1);
+        }
+        
+        .hero-bg.active {
+            opacity: 1;
+        }
+        
+        .hero-bg.active.zoom {
+            transform: scale(1.1);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s;
+        }
+        
+        .hero-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .hero-btn {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(5px);
+            transform: translateY(-100%);
+            transition: transform 0.5s ease-out;
+        }
+        
+        nav.visible {
+            transform: translateY(0);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            margin: 0.25rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        
+        .nav-link.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+        
+        /* Category Sections */
+        .category-section {
+            position: relative;
+            min-height: 100vh;
+            padding: 5rem 0;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.4));
+            z-index: -1;
+        }
+        
+        .category-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 8s ease-in-out;
+            transform: scale(1);
+        }
+        
+        .category-bg.active {
+            opacity: 0.2;
+        }
+        
+        .category-bg.active.zoom {
+            transform: scale(1.1);
+        }
+        
+        /* Places List - Changed from Grid to Single Column */
+        .places-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+        
+        .place-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .place-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .place-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .place-image-container {
+            height: 350px;
+            overflow: hidden;
+        }
+        
+        .place-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .place-card:hover .place-image {
+            transform: scale(1.05);
+        }
+        
+        .place-content {
+            padding: 1.5rem;
+        }
+        
+        .place-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .place-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .place-card:hover .place-title::after {
+            width: 100%;
+        }
+        
+        .place-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .place-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-title {
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        
+        .detail-title::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .accommodation-list {
+            margin-bottom: 1rem;
+        }
+        
+        .accommodation-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .accommodation-list li:hover {
+            transform: translateX(5px);
+        }
+        
+        .accommodation-list li::before {
+            content: '•';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 250px;
+            transform: scale(0.98);
+            transition: transform 0.3s ease;
+        }
+        
+        .place-card:hover .map-container {
+            transform: scale(1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Navigation Arrows */
+        .place-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding: 0 1rem;
+        }
+        
+        .nav-arrow {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .nav-arrow.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .nav-arrow:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        .nav-arrow.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 3rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        footer.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .footer-column.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .footer-column:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .footer-column:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .footer-column:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: width 0.6s ease-out 0.4s;
+        }
+        
+        .footer-column.animate h3::after {
+            width: 40px;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        
+        .footer-column.animate .footer-links li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .footer-column.animate .footer-links li:nth-child(1) {
+            transition-delay: 0.4s;
+        }
+        
+        .footer-column.animate .footer-links li:nth-child(2) {
+            transition-delay: 0.5s;
+        }
+        
+        .footer-column.animate .footer-links li:nth-child(3) {
+            transition-delay: 0.6s;
+        }
+        
+        .footer-column.animate .footer-links li:nth-child(4) {
+            transition-delay: 0.7s;
+        }
+        
+        .footer-links a {
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            background-color: var(--dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        
+        .footer-column.animate .social-links a {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        
+        .footer-column.animate .social-links a:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+        
+        .footer-column.animate .social-links a:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+        
+        .footer-column.animate .social-links a:nth-child(3) {
+            transition-delay: 0.7s;
+        }
+        
+        .footer-column.animate .social-links a:nth-child(4) {
+            transition-delay: 0.8s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s;
+        }
+        
+        footer.animate .copyright {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+            box-shadow: var(--shadow);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px) rotate(360deg);
+        }
+        
+        /* Floating animation for back to top button */
+        .back-to-top::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--primary);
+            z-index: -1;
+            opacity: 0;
+            animation: pulse 2s infinite;
+        }
+        
+        .back-to-top.visible:hover::after {
+            opacity: 0.4;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            70% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .place-card {
+                max-width: 700px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .category-section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .place-image-container {
+                height: 250px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+            
+            .place-image-container {
+                height: 200px;
+            }
+            
+            .place-title {
+                font-size: 1.5rem;
+            }
+            
+            .place-description {
+                font-size: 1rem;
+            }
+            
+            .detail-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <header>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Andhra Pradesh</h1>
+            <p class="hero-tagline">Discover the Koh-i-Noor of India through its rich heritage, breathtaking landscapes, and vibrant culture</p>
+            <a href="#temples" class="btn hero-btn">Explore Now</a>
+        </div>
+    </header> 
+
+        <!-- Hero background slideshow -->
+        <img src="https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/dc-Cover-t2kejd5ck053mqpje4ts54v785-20191213022818.Medi.jpeg" alt="Tirupati Temple" class="hero-bg active" loading="lazy">
+        <img src="https://www.shutterstock.com/image-photo/view-visakhapatnam-dolphins-nose-visakha-260nw-1095079250.jpg" alt="Araku Valley" class="hero-bg" loading="lazy">
+        <img src="https://www.savaari.com/blog/wp-content/uploads/2021/05/Araku-Valley7-waterfalls.jpg" alt="Visakhapatnam Beach" class="hero-bg" loading="lazy">
+        <img src="" alt="Amaravati Stupa" class="hero-bg" loading="lazy">
+        
+
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#temples" class="nav-link active">Sacred Temples</a>
+                <a href="#valleys" class="nav-link">Misty Valleys</a>
+                <a href="#beaches" class="nav-link">Golden Beaches</a>
+                <a href="#historical" class="nav-link">Historical Marvels</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Temples Section -->
+    <section id="temples" class="category-section">
+        <!-- Category background slideshow -->
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Temples" class="category-bg active" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821289-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Temples" class="category-bg" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821290-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Temples" class="category-bg" loading="lazy">
+        
+        <div class="category-overlay"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Sacred Temples</h2>
+            
+            <div class="places-list">
+                <!-- Tirupati -->
+                <article class="place-card" data-category="temples" data-index="0">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tirupati Temple" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Tirupati</h3>
+                        <p class="place-description">The spiritual capital of Andhra Pradesh, home to the famous Sri Venkateswara Temple atop Tirumala Hills, attracting millions of devotees annually.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Tirupati dates back to 300 AD, built by Tamil king Thondaimaan. The temple has been a pilgrimage site for centuries, mentioned in ancient texts like the Puranas.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Brahmotsavam festival (September), Talakona Waterfalls (highest in AP), Sri Govindaraja Swamy Temple, Srivari Mettu trekking path</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Marasa Sarovar Premiere (₹5,000-₹7,000) - Luxury with temple view</li>
+                                <li>Hotel Pai Viceroy (₹2,500-₹3,500) - Mid-range near temple</li>
+                                <li>TTD Choultries (₹100-₹500) - Budget pilgrim accommodation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15522.747104672873!2d79.4111868!3d13.6292988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b0989919f33%3A0xe518919e0ee2e811!2sTirupati%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654321!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Tirupati Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Srisailam -->
+                <article class="place-card" data-category="temples" data-index="1" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821234-4f8d7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Srisailam Temple" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Srisailam</h3>
+                        <p class="place-description">A sacred temple town in the Nallamala Hills, home to one of the 12 Jyotirlingas of Lord Shiva and one of the 18 Shakti Peethas.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Linked to the 12th-century Mallikarjuna Jyotirlinga Temple, one of Lord Shiva's 12 sacred abodes. The site has been mentioned in ancient scriptures like the Skanda Purana.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Srisailam Dam (one of India's largest), Srisailam Tiger Reserve (project tiger site), Patala Ganga ropeway, Akkamahadevi Caves</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Haritha Hotel Srisailam (₹1,800-₹2,500) - Government-run with good facilities</li>
+                                <li>Srisailam Devasthanam Cottages (₹1,000-₹1,500) - Basic pilgrim accommodation</li>
+                                <li>Private Lodges (₹700-₹1,200) - Budget options near temple</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15382.295104672873!2d78.8755138!3d16.0746529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbef8f8e8f8e8f%3A0x8f8e8f8f8e8f8e8f!2sSrisailam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654578!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Srisailam Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Kanaka Durga -->
+                <article class="place-card" data-category="temples" data-index="2" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821289-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kanaka Durga Temple" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Kanaka Durga Temple</h3>
+                        <p class="place-description">A major Shakti Peetha located atop Indrakeeladri Hill overlooking the Krishna River, especially vibrant during Navratri.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Dates back to the 8th century, with legends tied to Goddess Durga slaying the demon Mahishasura. The temple was expanded by various dynasties including the Vijayanagara kings.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Navratri celebrations (grandest in October), Prakasam Barrage (iconic landmark), Krishna River boating, Undavalli Caves nearby</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Novotel Vijayawada (₹5,000-₹7,000) - 5-star with river view</li>
+                                <li>Hotel Marg Krishnaaya (₹2,000-₹3,000) - Mid-range near temple</li>
+                                <li>TTD Guest Houses (₹500-₹1,000) - Budget pilgrim stays</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.295104672873!2d80.6245138!3d16.5156529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f0a6a7f1e8f9%3A0x8e8f8e8f8e8f8e8f!2sKanaka%20Durga%20Temple%2C%20Vijayawada!5e0!3m2!1sen!2sin!4v1677654700!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Kanaka Durga Temple Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Navigation Arrows -->
+                <div class="place-navigation">
+                    <div class="nav-arrow prev-arrow" onclick="navigatePlace('temples', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="nav-arrow next-arrow" onclick="navigatePlace('temples', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valleys Section -->
+    <section id="valleys" class="category-section">
+        <!-- Category background slideshow -->
+        <img src="https://images.unsplash.com/photo-1581857283616-068b8e5f2f5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Araku Valley" class="category-bg active" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821312-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Lambasingi" class="category-bg" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821165-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Valleys" class="category-bg" loading="lazy">
+        
+        <div class="category-overlay"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Misty Valleys</h2>
+            
+            <div class="places-list">
+                <!-- Araku Valley -->
+                <article class="place-card" data-category="valleys" data-index="0">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1581857283616-068b8e5f2f5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Araku Valley" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Araku Valley</h3>
+                        <p class="place-description">A picturesque valley in the Eastern Ghats known for its coffee plantations, waterfalls, and rich tribal culture, located 120km from Visakhapatnam.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Home to various tribal communities for centuries, coffee plantations were introduced during British rule. The scenic train route was completed in the 1960s.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Borra Caves (million-year-old limestone caves), Katiki Falls, Tribal Museum, Coffee Museum, Padmapuram Gardens, scenic train journey</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Haritha Valley Resort (₹2,000-₹3,000) - Government-run with great views</li>
+                                <li>Jungle Bells Nature Camp (₹1,500-₹2,500) - Forest department cottages</li>
+                                <li>Private Homestays (₹800-₹1,500) - Experience tribal hospitality</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15263.295104672873!2d82.8667898!3d18.3265902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c7e8f8e8f8e8f%3A0x8f8e8f8f8e8f8e8f!2sAraku%20Valley%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654456!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Araku Valley Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Lambasingi -->
+                <article class="place-card" data-category="valleys" data-index="1" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821312-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Lambasingi" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Lambasingi</h3>
+                        <p class="place-description">Known as the "Kashmir of Andhra Pradesh" for its cool climate and misty winters, with temperatures sometimes dropping below 0°C.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Gained prominence during British rule for its cool climate and tea plantations. The area is inhabited by tribal communities who have lived here for generations.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Kothapalli Waterfalls (seasonal), coffee and tea plantations, misty landscapes (best Nov-Feb), Thajangi Reservoir, sunrise viewpoints</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Haritha Hill Resort (₹1,800-₹2,500) - Basic government accommodation</li>
+                                <li>Camping Sites (₹1,000-₹1,500) - Experience winter camping</li>
+                                <li>Local Homestays (₹700-₹1,200) - Simple tribal-style stays</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15263.295104672873!2d82.4667898!3d17.8265902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3c7e8f8e8f8e8f%3A0x8f8e8f8f8e8f8e8f!2sLambasingi%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654756!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lambasingi Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Horsley Hills -->
+                <article class="place-card" data-category="valleys" data-index="2" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821175-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Horsley Hills" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Horsley Hills</h3>
+                        <p class="place-description">A charming hill station in the Chittoor district, named after British officer W.D. Horsley who established his summer residence here.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Developed as a summer retreat during British colonial rule. The governor's bungalow built in 1870 still stands as a heritage property.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Kalyani viewpoint, Horsley Hills Zoo, eucalyptus trees, wind rocks, pine forests, and pleasant climate year-round</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Haritha Hill Resort (₹2,000-₹3,000) - Well-maintained with great views</li>
+                                <li>Private Cottages (₹1,500-₹2,500) - Cozy mountain stays</li>
+                                <li>AP Tourism Guest House (₹1,200-₹1,800) - Basic but comfortable</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15522.747104672873!2d78.4111868!3d13.6292988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4d4b0989919f33%3A0xe518919e0ee2e811!2sHorsley%20Hills%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654321!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Horsley Hills Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Navigation Arrows -->
+                <div class="place-navigation">
+                    <div class="nav-arrow prev-arrow" onclick="navigatePlace('valleys', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="nav-arrow next-arrow" onclick="navigatePlace('valleys', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beaches Section -->
+    <section id="beaches" class="category-section">
+        <!-- Category background slideshow -->
+        <img src="https://images.unsplash.com/photo-1602671923994-08a62f6f3e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Visakhapatnam Beach" class="category-bg active" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821345-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Suryalanka Beach" class="category-bg" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821356-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Beaches" class="category-bg" loading="lazy">
+        
+        <div class="category-overlay"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Golden Beaches</h2>
+            
+            <div class="places-list">
+                <!-- Visakhapatnam -->
+                <article class="place-card" data-category="beaches" data-index="0">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1602671923994-08a62f6f3e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Visakhapatnam Beach" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Visakhapatnam</h3>
+                        <p class="place-description">The "City of Destiny" known for its beautiful beaches, scenic landscapes, and as the financial capital of Andhra Pradesh.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Founded by Kulotunga Chola in the 11th-12th centuries AD, named after the Hindu god Visakha. Developed as a major port during British rule.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>RK Beach (main beach), Rushikonda (blue flag beach), Kailasagiri Hill (ropeway available), INS Kursura Submarine Museum, Yarada Beach, Dolphin's Nose</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Novotel Visakhapatnam (₹6,000-₹8,000) - Beachfront luxury</li>
+                                <li>The Gateway Hotel (₹3,000-₹4,500) - Sea-facing rooms</li>
+                                <li>Haritha Beach Resort (₹1,200-₹2,000) - Budget beach stay</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15263.295104672873!2d83.2184818!3d17.6868159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431389e6970f%3A0x2c4d8c8b399d24e8!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654389!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Visakhapatnam Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Suryalanka Beach -->
+                <article class="place-card" data-category="beaches" data-index="1" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821345-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Suryalanka Beach" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Suryalanka Beach</h3>
+                        <p class="place-description">A serene 9km long beach known for its golden sands and calm waters, ideal for swimming and water sports, located near Bapatla.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Has been a local retreat for decades, gaining popularity as a serene coastal spot near Guntur. The beach is relatively undeveloped compared to other tourist beaches.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Sunrise views (best from the lighthouse), beach volleyball, jet skiing, nearby Bhavani Island (in Vijayawada), Uppalapadu Bird Sanctuary</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Haritha Beach Resort (₹1,800-₹2,500) - Beachfront cottages</li>
+                                <li>Surya Resorts (₹1,200-₹1,800) - Mid-range with pool</li>
+                                <li>Local Guest Houses (₹800-₹1,200) - Basic beachside stays</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15308.295104672873!2d80.8575138!3d15.8265902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a7e8f8e8f8e8f%3A0x8f8e8f8f8e8f8e8f!2sSuryalanka%20Beach%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654800!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Suryalanka Beach Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Mypad Beach -->
+                <article class="place-card" data-category="beaches" data-index="2" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821365-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mypad Beach" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Mypad Beach</h3>
+                        <p class="place-description">A pristine and relatively unexplored beach near Nellore, known for its natural beauty and peaceful atmosphere.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Historically a fishing village, now gaining attention for tourism. The beach remains largely undeveloped, preserving its natural charm.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Dolphin sightings (seasonal), beach camping, fishing village visits, Pulicat Lake nearby (second largest brackish water lake in India)</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Beachside Cottages (₹1,500-₹2,500) - Basic but scenic</li>
+                                <li>Hotels in Nellore (₹1,000-₹2,000) - 30km from beach</li>
+                                <li>Camping (₹500-₹1,000) - With local operators</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15308.295104672873!2d80.1575138!3d14.8265902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a7e8f8e8f8e8f%3A0x8f8e8f8f8e8f8e8f!2sMypad%20Beach%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654800!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mypad Beach Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Navigation Arrows -->
+                <div class="place-navigation">
+                    <div class="nav-arrow prev-arrow" onclick="navigatePlace('beaches', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="nav-arrow next-arrow" onclick="navigatePlace('beaches', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Sites Section -->
+    <section id="historical" class="category-section">
+        <!-- Category background slideshow -->
+        <img src="https://images.unsplash.com/photo-1593697821289-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Amaravati Stupa" class="category-bg active" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821256-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Lepakshi" class="category-bg" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593697821378-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gandikota Fort" class="category-bg" loading="lazy">
+        
+        <div class="category-overlay"></div>
+        
+        <div class="container">
+            <h2 class="section-title">Historical Marvels</h2>
+            
+            <div class="places-list">
+                <!-- Amaravati -->
+                <article class="place-card" data-category="historical" data-index="0">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821289-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Amaravati Stupa" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Amaravati</h3>
+                        <p class="place-description">An ancient Buddhist center and capital of the Satavahana dynasty with the Great Stupa, now the planned capital city of Andhra Pradesh.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Capital of the Satavahana dynasty (2nd century BCE - 3rd century CE), an important Buddhist center. The stupa was built during Ashoka's reign and was one of the largest in India.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Amaravati Stupa ruins, Dhyana Buddha Statue (125ft tall), Archaeological Museum, Krishna River views, upcoming capital city infrastructure</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Capital O Hotels (₹2,000-₹3,000) - Modern amenities</li>
+                                <li>Haritha Hotel (₹1,200-₹1,800) - Government-run</li>
+                                <li>Local Guest Houses (₹800-₹1,200) - Budget options</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15308.295104672873!2d80.3575138!3d16.5416529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f0a6a7f1e8f9%3A0x8e8f8e8f8e8f8e8f!2sAmaravati%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654512!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Amaravati Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Lepakshi -->
+                <article class="place-card" data-category="historical" data-index="1" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821256-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Lepakshi Temple" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Lepakshi</h3>
+                        <p class="place-description">A 16th-century Vijayanagara Empire marvel with exquisite architecture, frescoes, and the famous hanging pillar.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Built during the Vijayanagara Empire under King Achutaraya, the temple is dedicated to Veerabhadra. The hanging pillar is an engineering marvel that baffles visitors.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Monolithic Nandi statue (largest in India), hanging pillar (doesn't rest on ground), frescoes (best preserved in India), UNESCO tentative site, giant footprint legend</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Haritha Hotel Lepakshi (₹1,500-₹2,000) - Near temple complex</li>
+                                <li>Local Guest Houses (₹800-₹1,200) - Basic facilities</li>
+                                <li>Hotels in Hindupur (₹1,000-₹1,800) - 15km from site</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15422.295104672873!2d77.6085138!3d13.8016529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb1d8f8e8f8e8f9%3A0x8f8e8f8f8e8f8e8f!2sLepakshi%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654634!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lepakshi Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Gandikota Fort -->
+                <article class="place-card" data-category="historical" data-index="2" style="display: none;">
+                    <div class="place-image-container">
+                        <img src="https://images.unsplash.com/photo-1593697821378-6b8e7b6e9e8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Gandikota Fort" class="place-image" loading="lazy">
+                    </div>
+                    <div class="place-content">
+                        <h3 class="place-title">Gandikota Fort</h3>
+                        <p class="place-description">The "Grand Canyon of India" with stunning Pennar River gorge views, featuring a massive 13th-century fort complex.</p>
+                        
+                        <div class="place-details">
+                            <h4 class="detail-title">History</h4>
+                            <p>Built in the 13th century by the Pemmasani Nayaks, strategically located on the Pennar River. Served as an important stronghold for various dynasties.</p>
+                            
+                            <h4 class="detail-title">Highlights</h4>
+                            <p>Fort ruins (spread over 10 sq km), mosque, Madhavaraya temple, canyon views (best at sunrise/sunset), adventure activities (rappelling, camping)</p>
+                            
+                            <h4 class="detail-title">Accommodation</h4>
+                            <ul class="accommodation-list">
+                                <li>Haritha Hotel Gandikota (₹1,800-₹2,500) - Canyon view rooms</li>
+                                <li>Camping Sites (₹1,000-₹1,500) - Organized by AP Tourism</li>
+                                <li>Guest Houses in Jammalamadugu (₹800-₹1,200) - 15km from fort</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15422.295104672873!2d78.2855138!3d14.8016529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb1d8f8e8f8e8f9%3A0x8f8e8f8f8e8f8e8f!2sGandikota%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1677654856!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Gandikota Fort Location Map"></iframe>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="#temples">Sacred Temples</a></li>
+                        <li><a href="#valleys">Misty Valleys</a></li>
+                        <li><a href="#beaches">Golden Beaches</a></li>
+                        <li><a href="#historical">Historical Marvels</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Plan Your Trip</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Best Time to Visit</a></li>
+                        <li><a href="#">Tour Packages</a></li>
+                        <li><a href="#">Transportation</a></li>
+                        <li><a href="#">Travel Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+                        <li><a href="mailto:tourism@ap.gov.in">tourism@ap.gov.in</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Andhra Pradesh Tourism | Designed By Prem for travelers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Loading screen
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+                // Start animations after loader is gone
+                initAnimations();
+            }, 1000);
+        });
+
+        // Initialize all animations
+        function initAnimations() {
+            // Animate hero content
+            document.querySelector('.hero-content').classList.add('animate');
+            
+            // Animate nav links with staggered delay
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach((link, index) => {
+                setTimeout(() => {
+                    link.classList.add('animate');
+                }, 100 * index);
+            });
+            
+            // Show nav bar with slide down effect
+            setTimeout(() => {
+                document.querySelector('nav').classList.add('visible');
+            }, 500);
+            
+            // Initialize all slideshows
+            initSlideshow('.hero-bg');
+            initSlideshow('#temples .category-bg', 6000);
+            initSlideshow('#valleys .category-bg', 6000);
+            initSlideshow('#beaches .category-bg', 6000);
+            initSlideshow('#historical .category-bg', 6000);
+            
+            // Add zoom effect to background images
+            setInterval(() => {
+                const activeBg = document.querySelector('.hero-bg.active');
+                if (activeBg) activeBg.classList.add('zoom');
+                
+                const activeCategoryBg = document.querySelector('.category-bg.active');
+                if (activeCategoryBg) activeCategoryBg.classList.add('zoom');
+            }, 100);
+            
+            // Initialize Intersection Observer for scroll animations
+            initScrollAnimations();
+        }
+
+        // Hero background slideshow
+        function initSlideshow(selector, interval = 5000) {
+            const slides = document.querySelectorAll(selector);
+            let current = 0;
+            
+            if (slides.length > 1) {
+                function slide() {
+                    slides.forEach(slide => {
+                        slide.classList.remove('active', 'zoom');
+                    });
+                    current = (current + 1) % slides.length;
+                    slides[current].classList.add('active');
+                    setTimeout(slide, interval);
+                }
+                setTimeout(slide, interval);
+            } else if (slides.length === 1) {
+                slides[0].classList.add('active');
+            }
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Update active nav link
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Update active nav link based on scroll position
+        const sections = document.querySelectorAll('.category-section');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        function updateActiveNavLink() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        // Initialize scroll animations using Intersection Observer
+        function initScrollAnimations() {
+            const animateOnScroll = (elements, className, threshold = 0.1) => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add(className);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold });
+                
+                elements.forEach(element => observer.observe(element));
+            };
+            
+            // Animate section titles
+            animateOnScroll(document.querySelectorAll('.section-title'), 'animate');
+            
+            // Animate place cards with staggered delay
+            const placeCards = document.querySelectorAll('.place-card');
+            placeCards.forEach((card, index) => {
+                card.style.transitionDelay = `${0.1 * (index % 3)}s`;
+            });
+            animateOnScroll(placeCards, 'animate', 0.05);
+            
+            // Animate footer elements
+            animateOnScroll([document.querySelector('footer')], 'animate');
+            animateOnScroll(document.querySelectorAll('.footer-column'), 'animate', 0.05);
+        }
+
+        // Lazy loading for images
+        function lazyLoadImages() {
+            const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
+            
+            if ('IntersectionObserver' in window) {
+                const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src || lazyImage.src;
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', lazyLoadImages);
+    </script>
+</body>
+</html>

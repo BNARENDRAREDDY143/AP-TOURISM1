@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Srisailam Temple Card</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      margin: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .place-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .place-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .slideshow-container {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 20px;
+      user-select: none;
+    }
+
+    .slide-arrow.prev {
+      left: 15px;
+    }
+
+    .slide-arrow.next {
+      right: 15px;
+    }
+
+    .slide-nav {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .slide-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .slide-dot.active {
+      background-color: white;
+    }
+
+    .place-content {
+      padding: 20px;
+    }
+
+    .place-title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+      font-weight: 700;
+    }
+
+    .place-description {
+      color: #7f8c8d;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .place-details {
+      margin: 20px 0;
+    }
+
+    .detail-title {
+      font-size: 1.2rem;
+      color: #e67e22;
+      margin: 15px 0 8px;
+      font-weight: 600;
+    }
+
+    .place-details p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .accommodation-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .accommodation-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+      color: #555;
+    }
+
+    .accommodation-list li:last-child {
+      border-bottom: none;
+    }
+
+    .map-container {
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 250px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .directions-button {
+      display: block;
+      text-align: center;
+      background-color: #3498db;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin: 16px auto 0;
+      width: max-content;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .directions-button:hover {
+      background-color: #2980b9;
+    }
+
+    @media (max-width: 768px) {
+      .slideshow-container {
+        height: 250px;
+      }
+
+      .place-title {
+        font-size: 1.5rem;
+      }
+
+      .map-container {
+        height: 200px;
+      }
+
+      .directions-button {
+        font-size: 15px;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="place-card">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="https://www.srisailadevasthanam.org/static/media/SD-gallery-04.63cfb6ad.png" alt="Srisailam Temple Main View" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://www.srisailadevasthanam.org/static/media/SD-gallery-01.99bade47.png" alt="Srisailam Temple Gopuram" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://www.deccanchronicle.com/h-upload/2024/01/17/1071175-srisailam.webp" alt="Srisailam Temple Complex" loading="lazy">
+        </div>
+        <div class="slide">
+          <img src="https://static2.tripoto.com/media/filter/tst/img/292917/TripDocument/1541089680_maxresdefault_1.jpg" alt="Srisailam Temple View" loading="lazy">
+        </div>
+
+        <div class="slide-arrow prev">&#10094;</div>
+        <div class="slide-arrow next">&#10095;</div>
+
+        <div class="slide-nav">
+          <span class="slide-dot active"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+        </div>
+      </div>
+
+      <div class="place-content">
+        <h3 class="place-title">Srisailam</h3>
+        <p class="place-description">Srisailam is a sacred hill town in Andhra Pradesh, famous for the Mallikarjuna Swamy Temple, one of the 12 Jyotirlingas dedicated to Lord Shiva.</p>
+
+        <div class="place-details">
+          <h4 class="detail-title">History</h4>
+          <p>The temple has mythological significance dating back to the epics. It is believed that Lord Shiva and Goddess Parvati reside here as Mallikarjuna and Bhramaramba.</p>
+
+          <h4 class="detail-title">Highlights</h4>
+          <p>Visit Mallikarjuna Jyotirlinga, Bhramaramba Devi Temple, Srisailam Dam, and enjoy boat rides to Akkamahadevi Caves through Krishna River gorge.</p>
+
+          <h4 class="detail-title">Accommodation</h4>
+          <ul class="accommodation-list">
+            <li>Haritha Srisailam (₹2,000-₹3,000) – State tourism guest house</li>
+            <li>Srisaila Devasthanam Cottages (₹500-₹1,500) – Budget rooms for pilgrims</li>
+            <li>Private Hotels (₹1,000-₹2,500) – Available near temple complex</li>
+          </ul>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3811.424833398693!2d78.8707733751307!3d16.072606884607277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bccfbc19c98b00f%3A0x3a80d4f04b09eb92!2sMallikarjuna%20Swamy%20Temple%2C%20Srisailam!5e0!3m2!1sen!2sin!4v1712310348981!5m2!1sen!2sin" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <a
+          class="directions-button"
+          href="https://www.google.com/maps/dir/?api=1&destination=Mallikarjuna+Swamy+Temple,+Srisailam"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get Directions
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slide-dot');
+      const prevArrow = document.querySelector('.prev');
+      const nextArrow = document.querySelector('.next');
+      let currentSlide = 0;
+      let slideInterval;
+      const slideDuration = 3000;
+
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      function startSlideShow() {
+        slideInterval = setInterval(nextSlide, slideDuration);
+      }
+
+      function pauseSlideShow() {
+        clearInterval(slideInterval);
+      }
+
+      function initSlideshow() {
+        if (slides.length > 0) {
+          showSlide(currentSlide);
+          startSlideShow();
+
+          prevArrow.addEventListener('click', () => {
+            pauseSlideShow();
+            prevSlide();
+            startSlideShow();
+          });
+
+          nextArrow.addEventListener('click', () => {
+            pauseSlideShow();
+            nextSlide();
+            startSlideShow();
+          });
+
+          dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+              pauseSlideShow();
+              currentSlide = index;
+              showSlide(currentSlide);
+              startSlideShow();
+            });
+          });
+
+          const container = document.querySelector('.slideshow-container');
+          container.addEventListener('mouseenter', pauseSlideShow);
+          container.addEventListener('mouseleave', startSlideShow);
+        }
+      }
+
+      initSlideshow();
+    });
+  </script>
+</body>
+</html>

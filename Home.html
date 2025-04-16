@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhra Pradesh Tourism</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+            background-color: rgba(44, 62, 80, 0.9);
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(44, 62, 80, 0.95) !important;
+            padding: 0.5rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link:focus {
+            color: #f1c40f !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #f1c40f;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            background-color: rgba(52, 58, 64, 0.95);
+            border: none;
+        }
+
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #495057;
+            color: #f1c40f;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 15s linear;
+            transform: scale(1);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .hero-slide.zoom {
+            transform: scale(1.1);
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding-bottom: 8rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .btn-explore {
+            padding: 0.8rem 2rem;
+            background-color: #e67e22;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-explore:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6);
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: #e67e22;
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Destination Cards */
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+        
+        .destination-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e67e22;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .card-img-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .destination-card:hover .card-img {
+            transform: scale(1.1);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .card-location {
+            display: flex;
+            align-items: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-location i {
+            margin-right: 0.5rem;
+            color: #e67e22;
+        }
+        
+        .card-description {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-lineclamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .card-rating {
+            display: flex;
+            align-items: center;
+            color: #f39c12;
+            font-weight: 600;
+        }
+        
+        .card-rating i {
+            margin-right: 0.3rem;
+        }
+        
+        .btn-explore.destination-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn-explore.destination-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        /* Modal Styles */
+        .destination-modal .modal-content {
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+        }
+        
+        .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+            position: relative;
+        }
+        
+        .modal-header img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .modal-title {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .modal-location i {
+            margin-right: 0.5rem;
+            color: #e67e22;
+        }
+        
+        .modal-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .modal-highlights {
+            margin-bottom: 2rem;
+        }
+        
+        .highlight-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .highlight-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .highlight-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .highlight-list i {
+            color: #e67e22;
+            margin-right: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Content Frame */
+        .frame-container {
+            position: fixed;
+            top: 70px;
+            right: 0;
+            width: 60%;
+            height: calc(100vh - 70px);
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            border-left: 1px solid #eee;
+            display: none;
+        }
+        
+        .frame-container.active {
+            transform: translateX(0);
+            display: block;
+        }
+        
+        .frame-header {
+            padding: 1rem;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .close-frame {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .frame-content {
+            height: calc(100% - 50px);
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        
+        .frame-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: #f1c40f;
+        }
+
+        .social-icons {
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #f1c40f;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 1rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1199.98px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            
+            .destination-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+                max-width: 600px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .frame-container {
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                min-height: 500px;
+            }
+            
+            .hero-slide {
+                background-attachment: scroll;
+            }
+            
+            .hero-content {
+                padding-bottom: 5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .btn-explore {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .destination-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+            
+            .frame-container {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .card-img-container {
+                height: 200px;
+            }
+            
+            .frame-container {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Animation for destination cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">AP Tourism</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#destinations">Destinations</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="templesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sacred Temples
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="templesDropdown">
+                            <li><a class="dropdown-item frame-link" href="tirupati.html" data-title="Tirupati">Tirupati</a></li>
+                            <li><a class="dropdown-item frame-link" href="srisailam.html" data-title="Srisailam">Srisailam</a></li>
+                            <li><a class="dropdown-item frame-link" href="srikalahasti.html" data-title="Srikalahasti">Srikalahasti</a></li>
+                            <li><a class="dropdown-item frame-link" href="kanakadurga temple.html" data-title="Kanaka Durga Temple">Kanaka Durga Temple</a></li>
+                            <li><a class="dropdown-item frame-link" href="annavaram.html" data-title="Annavaram">Annavaram</a></li>
+                            <li><a class="dropdown-item frame-link" href="yaganti temple.html" data-title="Yaganti Temple">Yaganti Temple</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="beachesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Beaches
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="beachesDropdown">
+                            <li><a class="dropdown-item frame-link" href="Vishakapatnam.html" data-title="Ramakrishna beach">Ramakrishna beach</a></li>
+                            <li><a class="dropdown-item frame-link" href="rushikonda.html" data-title="Rushikonda">Rushikonda</a></li>
+                            <li><a class="dropdown-item frame-link" href="yarada beach.html" data-title="Yarada Beach">Yadara Beach</a></li>
+                            <li><a class="dropdown-item frame-link" href="suryalanka.html" data-title="Suryalanka Beach">Suryalanka Beach</a></li>
+                            <li><a class="dropdown-item frame-link" href="Maypadu beach.html" data-title="Maypadu Beach">Maypadu Beach</a></li>
+                            <li><a class="dropdown-item frame-link" href="maginapudi.html" data-title="Manginapudi Beach">Manginapudi Beach</a></li>
+                            <li><a class="dropdown-item frame-link" href="uppadabeach.html" data-title="Uppada Beach">Uppada Beach</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="valleysDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Valleys
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="valleysDropdown">
+                            <li><a class="dropdown-item frame-link" href="Araku Valley.html" data-title="Araku Valley">Araku Valley</a></li>
+                            <li><a class="dropdown-item frame-link" href="Lambasingi.html" data-title="Lambasingi">Lambasingi</a></li>
+                            <li><a class="dropdown-item frame-link" href="Horsley Valley.html" data-title="Horsley Valley">Horsley Valley</a></li>
+                            <li><a class="dropdown-item frame-link" href="Nallamala Valleys.html" data-title="Nallamala Valleys">Nallamala Valleys</a></li>
+                            <li><a class="dropdown-item frame-link" href="Tirumala Valleys.html" data-title="Tirumala Valleys">Tirumala Valleys</a></li>
+                            <li><a class="dropdown-item frame-link" href="Nagri Valley.html" data-title="Nagri Valley">Nagri Valley</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="historicsitesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Historic Sites
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="historicsitesDropdown">
+                            <li><a class="dropdown-item frame-link" href="Undavalli Caves.html" data-title="Undavalli Caves">Undavalli Caves</a></li>
+                            <li><a class="dropdown-item frame-link" href="Kondaveedu Fort.html" data-title="Kondaveedu Fort">Kondaveedu Fort</a></li>
+                            <li><a class="dropdown-item frame-link" href="Amaravati Stupam.html" data-title="Amaravati Stupam">Amaravati Stupam</a></li>
+                            <li><a class="dropdown-item frame-link" href="kondapalli fort.html" data-title="Kondapalli Fort">Kondapalli Fort</a></li>
+                            <li><a class="dropdown-item frame-link" href="Gandikota.html" data-title="Gandikota">Gandikota</a></li>
+                            <li><a class="dropdown-item frame-link" href="Lepakshi.html" data-title="Lepakshi">Lepakshi</a></li>
+                            <li><a class="dropdown-item frame-link" href="Borra Caves.html" data-title="Borra Caves">Borra Caves</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</br></br></br>
+
+    <!-- Hero Section with Sliding Backgrounds -->
+    <header id="home" class="hero">
+        <div class="hero-slideshow">
+            <div class="hero-slide active zoom" style="background-image: url('https://media.istockphoto.com/id/1285898933/photo/tall-buddha-statue-in-andhra-pradesh-state-amaravathi-india.jpg?s=612x612&w=0&k=20&c=3R939IZv0lNRZSTOCXB4KLvrFJgzJG08bjdC2M-gBy8=');"></div>
+            <div class="hero-slide" style="background-image: url('https://media.istockphoto.com/id/1268716417/photo/misty-tirupathi.jpg?s=612x612&w=0&k=20&c=6tcFZEteaY9mOhZADzIRo8b8NmUqCEmsO6ZIgbfjGW0=');"></div>
+            <div class="hero-slide" style="background-image: url('https://i.ytimg.com/vi/BAI04DLTUss/sddefault.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://static2.tripoto.com/media/filter/tst/img/292917/TripDocument/1541089680_maxresdefault_1.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://s3.india.com/wp-content/uploads/2024/12/amravati-famous.jpg##image/jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://media.istockphoto.com/id/846868280/photo/inside-view-of-borra-cave-with-colorful-lights.jpg?s=612x612&w=0&k=20&c=Z8oDT6ocSrZZ7awXy1i_eAKj2G_KGPPNVHjJ_h6GEyM=');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2018/08/AP-Beaches_Feature.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://www.seawatersports.com/images/places/kondaveedu-fort.png');"></div>
+            <div class="hero-slide" style="background-image: url('https://cdn1.tripoto.com/media/filter/nl/img/2380291/Image/1700117500_06frhanging_pillars_lepakshi.jpg.webp');"></div>
+            <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9c/Natural_stone_arch_in_tirumala.JPG');"></div>
+        </div>
+        
+        <div class="container h-100 d-flex flex-column justify-content-center">
+            <div class="hero-content">
+                <h1>Explore Andhra Pradesh</h1>
+                <p>Discover the land of rich culture, ancient heritage, and breathtaking natural beauty.</p>
+                <button class="btn-explore" onclick="scrollToDestinations()">Plan Your Trip</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Top Destinations</h2>
+                <p class="section-subtitle">Discover the most beautiful and culturally rich places in Andhra Pradesh, each offering unique experiences and unforgettable memories.</p>
+            </div>
+            
+            <div class="destination-grid">
+                <!-- Destination 1 - Tirupati -->
+                <div class="destination-card">
+                    <span class="card-badge">Pilgrimage</span>
+                    <div class="card-img-container">
+                        <img src="https://media.istockphoto.com/id/1268716417/photo/misty-tirupathi.jpg?s=612x612&w=0&k=20&c=6tcFZEteaY9mOhZADzIRo8b8NmUqCEmsO6ZIgbfjGW0=" alt="Tirupati Temple" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Tirupati</h3>
+                        <div class="card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Chittoor District</span>
+                        </div>
+                        <p class="card-description">Home to the sacred Sri Venkateswara Temple, one of the most visited pilgrimage sites in the world, attracting millions of devotees annually.</p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <button class="btn-explore destination-btn" data-bs-toggle="modal" data-bs-target="#tirupatiModal">
+                                Explore <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 2 - Araku Valley -->
+                <div class="destination-card">
+                    <span class="card-badge">Hill Station</span>
+                    <div class="card-img-container">
+                        <img src="https://blogs.tripzygo.in/wp-content/uploads/2025/03/things-to-do-in-araku-valley-1024x683.jpg" alt="Araku Valley" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Araku Valley</h3>
+                        <div class="card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Visakhapatnam District</span>
+                        </div>
+                        <p class="card-description">A picturesque hill station with lush coffee plantations, waterfalls, and tribal culture, offering a perfect escape into nature's lap.</p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                            <button class="btn-explore destination-btn" data-bs-toggle="modal" data-bs-target="#arakuModal">
+                                Explore <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 - Visakhapatnam -->
+                <div class="destination-card">
+                    <span class="card-badge">Beach City</span>
+                    <div class="card-img-container">
+                        <img src="https://thesamikhsya.com/wp-content/uploads/2020/11/067dd50b160c675b0bdfcfdf4c1be62b.jpg" alt="Visakhapatnam" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Visakhapatnam</h3>
+                        <div class="card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>North Andhra</span>
+                        </div>
+                        <p class="card-description">A vibrant port city with stunning beaches, rich maritime history, and a perfect blend of urban life and natural beauty.</p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                            <button class="btn-explore destination-btn" data-bs-toggle="modal" data-bs-target="#vizagModal">
+                                Explore <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 4 - Srisailam -->
+                <div class="destination-card">
+                    <span class="card-badge">Spiritual</span>
+                    <div class="card-img-container">
+                        <img src="https://indiapilgrimagepackages.weebly.com/uploads/1/4/6/7/146721958/5e4142c1ea17a-srisailam-trip.jpg" alt="Srisailam" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Srisailam</h3>
+                        <div class="card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nallamala Hills</span>
+                        </div>
+                        <p class="card-description">A sacred temple town nestled in the Nallamala Hills, home to the ancient Mallikarjuna Swamy Temple and stunning wildlife sanctuary.</p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <button class="btn-explore destination-btn" data-bs-toggle="modal" data-bs-target="#srisailamModal">
+                                Explore <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 5 - Lepakshi -->
+                <div class="destination-card">
+                    <span class="card-badge">Heritage</span>
+                    <div class="card-img-container">
+                        <img src="https://i1.wp.com/adventourer.in/wp-content/uploads/2020/09/nagalinga2-scaled.jpg?fit=525%2C355" alt="Lepakshi" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Lepakshi</h3>
+                        <div class="card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Anantapur District</span>
+                        </div>
+                        <p class="card-description">Famous for its Vijayanagara-era Veerabhadra Temple with exquisite carvings, hanging pillar, and magnificent Nandi statue.</p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.5</span>
+                            </div>
+                            <button class="btn-explore destination-btn" data-bs-toggle="modal" data-bs-target="#lepakshiModal">
+                                Explore <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Destination 6 - Amaravati -->
+                <div class="destination-card">
+                    <span class="card-badge">Historical</span>
+                    <div class="card-img-container">
+                        <img src="https://s7ap1.scene7.com/is/image/incredibleindia/Dhyana%20Buddha%20Statue-%20Amaravati-Vijayawada-Andhra%20Pradesh-hero-hs?qlt=82&ts=1726743646729" alt="Amaravati" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Amaravati</h3>
+                        <div class="card-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Guntur District</span>
+                        </div>
+                        <p class="card-description">An ancient Buddhist center with the magnificent Amaravati Stupa and museum showcasing rich Buddhist heritage and artifacts.</p>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.4</span>
+                            </div>
+                            <button class="btn-explore destination-btn" data-bs-toggle="modal" data-bs-target="#amaravatiModal">
+                                Explore <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Frame -->
+    <div class="frame-container" id="contentFrame">
+        <div class="frame-header">
+            <h5 id="frameTitle">Destination Details</h5>
+            <button class="close-frame" onclick="closeFrame()">&times;</button>
+        </div>
+        <div class="frame-content">
+            <iframe id="contentIframe" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AP Tourism</div>
+                
+                <div class="footer-links">
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#destinations" class="footer-link">Destinations</a>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Travel Guides</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <p class="copyright">© 2025 Andhra Pradesh Tourism. All rights reserved.</p>
+                <p class="copyright">Contact: info@aptourism.com | +91 123-456-7890</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Destination Modals -->
+    <!-- Tirupati Modal -->
+    <div class="modal fade destination-modal" id="tirupatiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="https://images.unsplash.com/photo-1584811644727-65a4a7b9b0f5?auto=format&fit=crop&w=1200&q=80" alt="Tirupati Temple">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title">Tirupati - The Spiritual Capital</h3>
+                    <div class="modal-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Chittoor District, Andhra Pradesh</span>
+                    </div>
+                    <p class="modal-description">
+                        Tirupati is one of the most revered pilgrimage destinations in India, famous for the Sri Venkateswara Temple located on the Tirumala hills. 
+                        The temple attracts millions of devotees annually, making it one of the most visited religious sites in the world. 
+                        The town is nestled in the foothills of the Eastern Ghats and offers a perfect blend of spirituality and natural beauty.
+                    </p>
+                    <div class="modal-highlights">
+                        <h4 class="highlight-title">Key Highlights</h4>
+                        <ul class="highlight-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sri Venkateswara Temple - One of the richest temples in the world with magnificent Dravidian architecture</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Tirumala Hills - Scenic seven hills with panoramic views and pleasant climate</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Silathoranam - Natural rock formation resembling a hooded serpent</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Akasa Ganga - Beautiful waterfall considered sacred by devotees</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Tirupati Laddu - The famous prasadam with GI tag status</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn-explore w-100" data-bs-dismiss="modal">
+                        <i class="fas fa-calendar-alt me-2"></i> Plan Your Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Araku Valley Modal -->
+    <div class="modal fade destination-modal" id="arakuModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=1200&q=80" alt="Araku Valley">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title">Araku Valley - The Coffee Paradise</h3>
+                    <div class="modal-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Visakhapatnam District, Andhra Pradesh</span>
+                    </div>
+                    <p class="modal-description">
+                        Araku Valley is a breathtaking hill station located in the Eastern Ghats, about 120 km from Visakhapatnam. 
+                        Known for its lush green coffee plantations, cascading waterfalls, and rich tribal culture, Araku offers a perfect retreat from city life. 
+                        The valley train journey from Visakhapatnam to Araku is considered one of the most scenic rail routes in India.
+                    </p>
+                    <div class="modal-highlights">
+                        <h4 class="highlight-title">Key Highlights</h4>
+                        <ul class="highlight-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Borra Caves - Million-year-old limestone caves with stunning stalactite and stalagmite formations</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Coffee Museum - Showcasing the history and process of coffee production in the region</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Katiki Waterfalls - Beautiful waterfall surrounded by dense forests</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Tribal Museum - Exhibiting the rich cultural heritage of local tribes</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Padmapuram Gardens - Picturesque gardens with tree-top huts</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn-explore w-100" data-bs-dismiss="modal">
+                        <i class="fas fa-calendar-alt me-2"></i> Plan Your Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visakhapatnam Modal -->
+    <div class="modal fade destination-modal" id="vizagModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="https://images.unsplash.com/photo-1582972236019-ea9e36a96a2e?auto=format&fit=crop&w=1200&q=80" alt="Visakhapatnam">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title">Visakhapatnam - The Jewel of East Coast</h3>
+                    <div class="modal-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>North Andhra, Andhra Pradesh</span>
+                    </div>
+                    <p class="modal-description">
+                        Visakhapatnam, commonly known as Vizag, is the largest city in Andhra Pradesh and a major port on the east coast of India. 
+                        The city boasts beautiful beaches, a rich maritime history, and a perfect blend of urban development and natural attractions. 
+                        From ancient Buddhist sites to modern submarine museums, Vizag offers diverse experiences for every traveler.
+                    </p>
+                    <div class="modal-highlights">
+                        <h4 class="highlight-title">Key Highlights</h4>
+                        <ul class="highlight-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>RK Beach - Popular beach with the iconic Visakhapatnam Lighthouse</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>INS Kursura Submarine Museum - Decommissioned submarine turned museum</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kailasagiri Hill Park - Panoramic hilltop park with ropeway and giant Shiva-Parvati statue</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Borra Caves - Ancient limestone caves located in the Ananthagiri Hills</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Thotlakonda - Ancient Buddhist complex overlooking the Bay of Bengal</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn-explore w-100" data-bs-dismiss="modal">
+                        <i class="fas fa-calendar-alt me-2"></i> Plan Your Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Srisailam Modal -->
+    <div class="modal fade destination-modal" id="srisailamModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="https://images.unsplash.com/photo-1585506942812-e72b29cef752?auto=format&fit=crop&w=1200&q=80" alt="Srisailam">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title">Srisailam - The Sacred Abode</h3>
+                    <div class="modal-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nallamala Hills, Andhra Pradesh</span>
+                    </div>
+                    <p class="modal-description">
+                        Srisailam is a sacred temple town nestled in the Nallamala Hills, famous for the Mallikarjuna Swamy Temple, one of the 12 Jyotirlingas of Lord Shiva. 
+                        Surrounded by dense forests and the Krishna River, it offers a serene spiritual experience combined with natural beauty.
+                    </p>
+                    <div class="modal-highlights">
+                        <h4 class="highlight-title">Key Highlights</h4>
+                        <ul class="highlight-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mallikarjuna Swamy Temple - Ancient temple with Vijayanagara architecture</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Srisailam Dam - Major hydroelectric project with scenic views</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Wildlife Sanctuary - Home to diverse flora and fauna</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn-explore w-100" data-bs-dismiss="modal">
+                        <i class="fas fa-calendar-alt me-2"></i> Plan Your Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lepakshi Modal -->
+    <div class="modal fade destination-modal" id="lepakshiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="https://images.unsplash.com/photo-1585506942812-e72b29cef752?auto=format&fit=crop&w=1200&q=80" alt="Lepakshi">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title">Lepakshi - Heritage Marvel</h3>
+                    <div class="modal-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Anantapur District, Andhra Pradesh</span>
+                    </div>
+                    <p class="modal-description">
+                        Lepakshi is renowned for its Veerabhadra Temple, a masterpiece of Vijayanagara architecture featuring intricate carvings, a hanging pillar, and a massive Nandi statue. 
+                        The site holds historical and mythological significance, linked to the Ramayana.
+                    </p>
+                    <div class="modal-highlights">
+                        <h4 class="highlight-title">Key Highlights</h4>
+                        <ul class="highlight-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hanging Pillar - Architectural wonder that defies gravity</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Giant Nandi - One of the largest monolithic Nandi statues in India</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ancient Murals - Exquisite paintings depicting mythological scenes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn-explore w-100" data-bs-dismiss="modal">
+                        <i class="fas fa-calendar-alt me-2"></i> Plan Your Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Amaravati Modal -->
+    <div class="modal fade destination-modal" id="amaravatiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="https://images.unsplash.com/photo-1585506942812-e72b29cef752?auto=format&fit=crop&w=1200&q=80" alt="Amaravati">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title">Amaravati - Buddhist Legacy</h3>
+                    <div class="modal-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Guntur District, Andhra Pradesh</span>
+                    </div>
+                    <p class="modal-description">
+                        Amaravati is an ancient Buddhist center famous for its grand stupa, once one of the largest in India. 
+                        The site preserves a rich heritage with a museum displaying Buddhist artifacts and sculptures from centuries past.
+                    </p>
+                    <div class="modal-highlights">
+                        <h4 class="highlight-title">Key Highlights</h4>
+                        <ul class="highlight-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Amaravati Stupa - Ancient Buddhist monument from 3rd century BCE</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Archaeological Museum - Collection of Buddhist relics and sculptures</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Historical Significance - Major center of Buddhist learning</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn-explore w-100" data-bs-dismiss="modal">
+                        <i class="fas fa-calendar-alt me-2"></i> Plan Your Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (!this.classList.contains('frame-link')) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Scroll to Destinations Section
+        function scrollToDestinations() {
+            const destinationsSection = document.getElementById('destinations');
+            window.scrollTo({
+                top: destinationsSection.offsetTop - 70,
+                behavior: 'smooth'
+            });
+        }
+
+        // Hero Slideshow Functionality
+        function initHeroSlideshow() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            
+            // Start with the first slide active
+            slides[currentSlide].classList.add('active', 'zoom');
+            
+            // Change slide every 5 seconds
+            setInterval(() => {
+                // Remove active and zoom classes from current slide
+                slides[currentSlide].classList.remove('active', 'zoom');
+                
+                // Move to next slide
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                // Add active class to new slide (zoom will be added after transition)
+                slides[currentSlide].classList.add('active');
+                
+                // After a short delay, add zoom class for the zoom effect
+                setTimeout(() => {
+                    slides[currentSlide].classList.add('zoom');
+                }, 50);
+            }, 5000);
+        }
+
+        // Frame Functionality - Only for frame-link class elements
+        function loadInFrame(href, title) {
+            const frame = document.getElementById('contentFrame');
+            const iframe = document.getElementById('contentIframe');
+            const frameTitle = document.getElementById('frameTitle');
+            
+            // Set the iframe source to the specified href
+            iframe.src = href;
+            
+            frameTitle.textContent = title;
+            frame.classList.add('active');
+            
+            // Close any open modals
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (modal.classList.contains('show')) {
+                    const modalInstance = bootstrap.Modal.getInstance(modal);
+                    if (modalInstance) modalInstance.hide();
+                }
+            });
+            
+            // Prevent body scrolling
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeFrame() {
+            const frame = document.getElementById('contentFrame');
+            const iframe = document.getElementById('contentIframe');
+            
+            frame.classList.remove('active');
+            iframe.src = 'about:blank';
+            
+            // Restore body scrolling
+            document.body.style.overflow = '';
+        }
+        
+        // Initialize frame links
+        document.addEventListener('DOMContentLoaded', function() {
+            const frameLinks = document.querySelectorAll('.frame-link');
+            
+            frameLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    const title = this.getAttribute('data-title') || this.textContent;
+                    loadInFrame(href, title);
+                });
+            });
+            
+            // Initialize hero slideshow
+            initHeroSlideshow();
+        });
+
+        // Animation for destination cards
+        function animateOnScroll() {
+            const destinationCards = document.querySelectorAll('.destination-card');
+            destinationCards.forEach((card, index) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(cardPosition < screenPosition) {
+                    card.style.animation = `fadeInUp 0.5s ease-out forwards ${index * 0.1}s`;
+                }
+            });
+        }
+        
+        // Add animation when cards come into view
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
